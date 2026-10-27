@@ -1,0 +1,1090 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-main: #060611;
+    --text-main: #f5f7ff;
+    --card-bg: #0f1629;
+    --card-border: rgba(148, 163, 184, 0.15);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html.dark {
+    color-scheme: dark;
+    --bg-main: #060611;
+    --text-main: #f5f7ff;
+    --card-bg: #0f1629;
+    --card-border: rgba(148, 163, 184, 0.15);
+  }
+
+  html.light {
+    color-scheme: light;
+    --bg-main: #f8fafc;
+    --text-main: #0f172a;
+    --card-bg: #ffffff;
+    --card-border: rgba(203, 213, 225, 0.8);
+  }
+
+  body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  /* Dark mode background gradient */
+  html.dark body {
+    background-image: 
+      radial-gradient(circle at 10% 0%, rgba(139, 92, 246, 0.18), transparent 32%),
+      radial-gradient(circle at 90% 5%, rgba(6, 182, 212, 0.12), transparent 30%);
+    background-attachment: fixed;
+  }
+
+  /* Light mode clean background */
+  html.light body {
+    background-color: #f8fafc;
+    background-image: 
+      radial-gradient(circle at 12% 0%, rgba(139, 92, 246, 0.08), transparent 35%),
+      radial-gradient(circle at 88% 5%, rgba(6, 182, 212, 0.08), transparent 35%);
+    background-attachment: fixed;
+  }
+
+  /* =========================================================
+     LIGHT MODE PROFESSIONAL THEME OVERRIDES
+     ========================================================= */
+  html.light .bg-\[\#060611\] {
+    background-color: #f8fafc !important;
+    color: #0f172a !important;
+  }
+
+  html.light .bg-\[\#070912\]\/90,
+  html.light .bg-\[\#070714\],
+  html.light .bg-\[\#080b16\] {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    border-color: #e2e8f0 !important;
+    box-shadow: 0 4px 20px -4px rgba(15, 23, 42, 0.06) !important;
+  }
+
+  html.light .bg-\[\#05070e\] {
+    background-color: #f1f5f9 !important;
+    border-color: #cbd5e1 !important;
+  }
+
+  /* Cards & Containers in Light Mode */
+  html.light .bg-\[\#0f172a\],
+  html.light .bg-\[\#0c1222\],
+  html.light .bg-\[\#0d1422\],
+  html.light .bg-\[\#0a0f1d\],
+  html.light .bg-\[\#101625\],
+  html.light .bg-\[\#10182c\],
+  html.light .bg-\[\#101b2f\],
+  html.light .bg-\[\#0e1627\],
+  html.light .bg-\[\#080d1a\],
+  html.light .bg-\[\#080d19\],
+  html.light .bg-\[\#090e1c\],
+  html.light .bg-\[\#0c1224\] {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    color: #1e293b !important;
+    box-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03) !important;
+  }
+
+  html.light .from-\[\#11182c\],
+  html.light .to-\[\#0a101d\] {
+    --tw-gradient-from: #ffffff !important;
+    --tw-gradient-to: #f8fafc !important;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  /* Additional dark surfaces used by the Studio and generator panels */
+  html.light [class~="bg-[#0d1424]"],
+  html.light [class~="bg-[#0d1424]/95"],
+  html.light [class~="bg-[#0d1424]/90"],
+  html.light [class~="bg-[#0d1422]"],
+  html.light [class~="bg-[#0d1422]/90"],
+  html.light [class~="bg-[#111827]"],
+  html.light [class~="bg-[#111827]/80"],
+  html.light [class~="bg-[#090e1c]"],
+  html.light [class~="bg-[#090e1c]/90"] {
+    background-color: #ffffff !important;
+    border-color: #e2e8f0 !important;
+    color: #1e293b !important;
+    box-shadow: 0 4px 18px -2px rgba(15, 23, 42, 0.05) !important;
+  }
+
+  /* Dark utility text must remain readable on Studio panels converted to light surfaces */
+  html.light [class~="bg-[#0d1424]"] [class~="text-white"],
+  html.light [class~="bg-[#0d1424]/95"] [class~="text-white"],
+  html.light [class~="bg-[#0d1424]/90"] [class~="text-white"],
+  html.light [class~="bg-[#090e1c]"] [class~="text-white"],
+  html.light [class~="bg-[#090e1c]/90"] [class~="text-white"] {
+    color: #1e293b !important;
+  }
+
+  /* Keep white foreground only on explicitly saturated primary actions */
+  html.light button[class*="bg-purple-600"],
+  html.light button[class*="bg-indigo-600"],
+  html.light button[class*="bg-cyan-600"],
+  html.light a[class*="bg-purple-600"],
+  html.light a[class*="bg-indigo-600"],
+  html.light a[class*="bg-cyan-600"],
+  html.light [class*="bg-gradient-to-r"].text-white {
+    color: #ffffff !important;
+  }
+
+  /* Inputs and dropdowns */
+  html.light input,
+  html.light select,
+  html.light textarea {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+  }
+
+  html.light input::placeholder,
+  html.light textarea::placeholder {
+    color: #94a3b8 !important;
+  }
+
+  /* Light mode borders */
+  html.light .border-slate-800,
+  html.light .border-slate-800\/80,
+  html.light .border-slate-800\/60,
+  html.light .border-slate-700,
+  html.light .border-slate-700\/80,
+  html.light .border-slate-700\/60,
+  html.light .border-white\/5,
+  html.light .border-white\/10 {
+    border-color: #e2e8f0 !important;
+  }
+
+  html.light .bg-\[\#182236\] {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+  }
+
+  html.light .bg-\[\#101a2c\] {
+    background-color: #f8fafc !important;
+    color: #1e293b !important;
+  }
+
+  /* Re-map the most common fixed dark surfaces used by cards and panels. */
+  html.light .bg-\[\#0e1627\],
+  html.light .bg-\[\#0f1629\],
+  html.light .bg-\[\#101a2c\] {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    border-color: #e2e8f0 !important;
+  }
+
+  html.light .bg-\[\#131b2e\],
+  html.light .bg-\[\#0d1424\],
+  html.light .bg-\[\#080d19\],
+  html.light .bg-\[\#060611\] {
+    background-color: #f1f5f9 !important;
+    color: #0f172a !important;
+    border-color: #cbd5e1 !important;
+  }
+
+  html.light [class*="from-\[\#131b2e\]"],
+  html.light [class*="via-\[\#0d1424\]"],
+  html.light [class*="to-\[\#080d19\]"] {
+    background-image: linear-gradient(135deg, #ffffff, #f1f5f9, #e2e8f0) !important;
+  }
+
+  /* Typography Contrast in Light Mode */
+  html.light h1:not([class*="bg-clip-text"]),
+  html.light h2:not([class*="bg-clip-text"]),
+  html.light h3:not([class*="bg-clip-text"]),
+  html.light h4:not([class*="bg-clip-text"]) {
+    color: #0f172a !important;
+  }
+
+  html.light p {
+    color: #334155;
+  }
+
+  html.light .text-slate-400 {
+    color: #64748b !important;
+  }
+
+  html.light .text-slate-300 {
+    color: #475569 !important;
+  }
+
+  html.light .text-slate-200 {
+    color: #1e293b !important;
+  }
+
+  html.light .text-slate-100 {
+    color: #0f172a !important;
+  }
+
+  /* PROTECT BUTTONS AND ACCENTS: They must maintain bright white text on colored backgrounds */
+  html.light button.bg-gradient-to-r,
+  html.light button.bg-purple-600,
+  html.light button.bg-indigo-600,
+  html.light button.bg-cyan-600,
+  html.light a.bg-gradient-to-r,
+  html.light [class*="bg-gradient-to-r"] > span.text-white,
+  html.light [class*="bg-purple-600"] span,
+  html.light [class*="bg-purple-600"],
+  html.light [class*="bg-indigo-600"] span,
+  html.light [class*="bg-indigo-600"],
+  html.light .keep-white {
+    color: #ffffff !important;
+  }
+
+  html.light button.bg-gradient-to-r *,
+  html.light .btn-primary * {
+    color: #ffffff !important;
+  }
+
+  /* Badge styling in light mode */
+  html.light .bg-purple-500\/10,
+  html.light .bg-purple-500\/15,
+  html.light .bg-purple-500\/20 {
+    background-color: #f3e8ff !important;
+    border-color: #d8b4fe !important;
+  }
+  html.light .text-purple-300,
+  html.light .text-purple-400 {
+    color: #7e22ce !important;
+  }
+
+  html.light .bg-cyan-500\/10,
+  html.light .bg-cyan-500\/15,
+  html.light .bg-cyan-500\/20 {
+    background-color: #ecfeff !important;
+    border-color: #a5f3fc !important;
+  }
+  html.light .text-cyan-300,
+  html.light .text-cyan-400 {
+    color: #0e7490 !important;
+  }
+
+  html.light .bg-indigo-500\/10,
+  html.light .bg-indigo-500\/15,
+  html.light .bg-indigo-500\/20 {
+    background-color: #e0e7ff !important;
+    border-color: #c7d2fe !important;
+  }
+  html.light .text-indigo-300,
+  html.light .text-indigo-400 {
+    color: #4338ca !important;
+  }
+
+  html.light .bg-emerald-500\/10,
+  html.light .bg-emerald-500\/15,
+  html.light .bg-emerald-500\/20 {
+    background-color: #ecfdf5 !important;
+    border-color: #a7f3d0 !important;
+  }
+  html.light .text-emerald-300,
+  html.light .text-emerald-400 {
+    color: #047857 !important;
+  }
+
+  html.light .bg-amber-500\/10,
+  html.light .bg-amber-500\/15,
+  html.light .bg-amber-500\/20 {
+    background-color: #fffbeb !important;
+    border-color: #fde68a !important;
+  }
+  html.light .text-amber-300,
+  html.light .text-amber-400 {
+    color: #b45309 !important;
+  }
+
+  /* RTL Support for Arabic */
+  [dir="rtl"] {
+    text-align: right;
+  }
+
+  [dir="rtl"] .text-left {
+    text-align: right;
+  }
+
+  [dir="rtl"] .text-right {
+    text-align: left;
+  }
+
+  /* Text size adjustments */
+  html.text-size-compact {
+    font-size: 14px;
+  }
+
+  html.text-size-normal {
+    font-size: 16px;
+  }
+
+  html.text-size-large {
+    font-size: 18px;
+  }
+
+  /* Reduced motion */
+  html.reduce-motion *,
+  html.reduce-motion *::before,
+  html.reduce-motion *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  /* Keyframe animations for logo & hero title */
+  @keyframes gradient-x {
+    0%, 100% {
+      background-size: 200% 200%;
+      background-position: left center;
+    }
+    50% {
+      background-size: 200% 200%;
+      background-position: right center;
+    }
+  }
+
+  @keyframes forge-pulse {
+    0%, 100% {
+      box-shadow: 0 0 16px -3px rgba(168, 85, 247, 0.35), 0 0 8px -2px rgba(6, 182, 212, 0.45);
+    }
+    50% {
+      box-shadow: 0 0 26px 3px rgba(168, 85, 247, 0.65), 0 0 14px 2px rgba(6, 182, 212, 0.75);
+    }
+  }
+
+  .animate-gradient-x {
+    animation: gradient-x 7s ease infinite;
+  }
+
+  .animate-forge-pulse {
+    animation: forge-pulse 4s ease-in-out infinite;
+  }
+}
+
+
+
+/* Experience layer: consistent surfaces, keyboard access, and motion preferences. */
+@layer base {
+  :where(a, button, input, select, textarea, [role="button"], [tabindex]):focus-visible {
+    outline: 3px solid #a78bfa;
+    outline-offset: 3px;
+  }
+
+  :where(button, a, input, select, textarea) {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  ::selection {
+    background: rgba(139, 92, 246, 0.32);
+    color: inherit;
+  }
+
+  html {
+    scroll-padding-top: 6rem;
+    text-rendering: optimizeLegibility;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    line-height: 1.55;
+  }
+
+  img, canvas, svg, video {
+    max-width: 100%;
+  }
+
+  button:disabled,
+  [aria-disabled="true"] {
+    cursor: not-allowed;
+    opacity: 0.58;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html:not(.allow-motion) {
+      scroll-behavior: auto;
+    }
+
+    html:not(.allow-motion) *,
+    html:not(.allow-motion) *::before,
+    html:not(.allow-motion) *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* A coherent light palette for utility classes used throughout older views.
+   Keep saturated primary actions and accent chips colorful. */
+@layer utilities {
+  html.light {
+    color-scheme: light;
+    --nf-surface: #ffffff;
+    --nf-surface-muted: #f1f5f9;
+    --nf-line: #dbe3ee;
+    --nf-ink: #172033;
+    --nf-muted: #526176;
+  }
+
+  html.light body {
+    color: var(--nf-ink);
+  }
+
+  html.light :is(header, nav, footer, section, article, aside, dialog) {
+    border-color: var(--nf-line);
+  }
+
+  html.light :is(.bg-slate-900, .bg-slate-900\/90, .bg-slate-900\/80,
+    .bg-slate-800, .bg-slate-800\/90, .bg-slate-800\/80,
+    .bg-slate-800\/60, .bg-slate-950, .bg-gray-900, .bg-gray-800) {
+    background-color: var(--nf-surface) !important;
+    border-color: var(--nf-line) !important;
+    color: var(--nf-ink) !important;
+  }
+
+  html.light :is(.text-white, .text-slate-100, .text-slate-200) {
+    color: var(--nf-ink);
+  }
+
+  html.light :is(.text-slate-300, .text-slate-400, .text-slate-500, .text-gray-400) {
+    color: var(--nf-muted) !important;
+  }
+
+  html.light :is(.border-slate-600, .border-slate-700, .border-slate-800,
+    .border-slate-700\/80, .border-slate-800\/80, .border-white\/10, .border-white\/5) {
+    border-color: var(--nf-line) !important;
+  }
+
+  html.light :is(input, select, textarea) {
+    color: var(--nf-ink);
+    accent-color: #7c3aed;
+  }
+
+  html.light :is(input, select, textarea):focus-visible {
+    border-color: #8b5cf6 !important;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+  }
+
+  html.light :is(button, a) {
+    transition-property: color, background-color, border-color, box-shadow, transform;
+    transition-duration: 160ms;
+  }
+
+  html.light :is(button, a):focus-visible {
+    outline-color: #7c3aed;
+  }
+
+  html.light .bg-slate-800\/60:hover,
+  html.light .bg-slate-800\/80:hover,
+  html.light .bg-slate-800\/90:hover {
+    background-color: #e9eafc !important;
+  }
+}
+
+
+/* Cross-view theme repairs: legacy fixed dark surfaces must also be readable in light mode. */
+@layer utilities {
+  html.light .bg-\[\#0c1222\],
+  html.light .bg-\[\#10182c\],
+  html.light .bg-\[\#0e1627\],
+  html.light .bg-\[\#090d19\],
+  html.light .bg-\[\#0a101d\],
+  html.light .bg-\[\#11182c\],
+  html.light .bg-\[\#060611\],
+  html.light .bg-\[\#070714\],
+  html.light .bg-\[\#080b16\] {
+    background-color: #ffffff !important;
+    color: #172033 !important;
+    border-color: #dbe3ee !important;
+  }
+
+  html.light .from-\[\#11182c\] {
+    --tw-gradient-from: #ffffff var(--tw-gradient-from-position) !important;
+    --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position) !important;
+  }
+
+  html.light .to-\[\#0a101d\] {
+    --tw-gradient-to: #f1f5f9 var(--tw-gradient-to-position) !important;
+  }
+
+  html.light .via-slate-900 {
+    --tw-gradient-via: #f8fafc var(--tw-gradient-via-position) !important;
+  }
+
+  html.light .text-white {
+    color: #172033 !important;
+  }
+
+  html.light .bg-black\/75 {
+    background-color: rgb(15 23 42 / 0.45) !important;
+  }
+
+  html.light .bg-gradient-to-r.from-purple-900\/30 {
+    background-image: linear-gradient(to right, #f5f3ff, #f8fafc, #eef2ff) !important;
+  }
+
+  html.light .bg-purple-600\/30,
+  html.light .bg-purple-600\/35 {
+    color: #581c87 !important;
+  }
+
+  html.light option {
+    background: #ffffff;
+    color: #172033;
+  }
+}
+
+
+/* Global light-mode repair: normalize legacy dark surfaces across every view. */
+@layer utilities {
+  html.light {
+    --nf-page: #f4f7fc;
+    --nf-surface: #ffffff;
+    --nf-surface-soft: #eef2f8;
+    --nf-border: #d8e1ed;
+    --nf-ink: #172033;
+    --nf-muted: #526176;
+  }
+
+  html.light body {
+    background-color: var(--nf-page) !important;
+    background-image:
+      radial-gradient(ellipse at 8% 0%, rgba(124, 58, 237, 0.055), transparent 34%),
+      radial-gradient(ellipse at 92% 2%, rgba(8, 145, 178, 0.045), transparent 32%) !important;
+    color: var(--nf-ink) !important;
+  }
+
+  /* Dark arbitrary-color surfaces are common in the older JSX views and Studio. */
+  html.light [class*="bg-[#0"],
+  html.light [class*="bg-[#1"] {
+    background-color: var(--nf-surface) !important;
+    border-color: var(--nf-border) !important;
+    color: var(--nf-ink) !important;
+    box-shadow: 0 4px 16px rgba(23, 32, 51, 0.045);
+  }
+
+  html.light [class*="from-[#0"],
+  html.light [class*="via-[#0"],
+  html.light [class*="to-[#0"],
+  html.light [class*="from-[#1"],
+  html.light [class*="via-[#1"],
+  html.light [class*="to-[#1"] {
+    --tw-gradient-from: #ffffff var(--tw-gradient-from-position) !important;
+    --tw-gradient-via: #f8fafc var(--tw-gradient-via-position) !important;
+    --tw-gradient-to: #eef2f8 var(--tw-gradient-to-position) !important;
+  }
+
+  html.light :is(header, nav, footer, section, article, aside, dialog, details, summary) {
+    border-color: var(--nf-border);
+  }
+
+  html.light :is(p, li, dd, dt, label, small, figcaption) {
+    color: var(--nf-muted);
+  }
+
+  html.light :is(h1, h2, h3, h4, h5, h6) {
+    color: var(--nf-ink) !important;
+  }
+
+  html.light :is(.text-slate-50, .text-slate-100, .text-slate-200, .text-white) {
+    color: var(--nf-ink) !important;
+  }
+
+  html.light :is(.text-slate-300, .text-slate-400, .text-slate-500, .text-gray-400, .text-gray-500) {
+    color: var(--nf-muted) !important;
+  }
+
+  html.light :is(input, select, textarea) {
+    background-color: #ffffff !important;
+    color: var(--nf-ink) !important;
+    border-color: #cbd5e1 !important;
+  }
+
+  html.light :is(input, select, textarea)::placeholder {
+    color: #78869a !important;
+    opacity: 1;
+  }
+
+  html.light option {
+    background-color: #ffffff !important;
+    color: var(--nf-ink) !important;
+  }
+
+  /* Keep white text on saturated primary actions, including their icons and labels. */
+  html.light :is(button, a)[class*="bg-gradient-to-"],
+  html.light :is(button, a)[class*="bg-purple-600"],
+  html.light :is(button, a)[class*="bg-indigo-600"],
+  html.light :is(button, a)[class*="bg-cyan-600"],
+  html.light :is(button, a)[class*="bg-blue-600"],
+  html.light :is(button, a)[class*="bg-violet-600"],
+  html.light :is(button, a)[class*="bg-pink-600"],
+  html.light :is(button, a)[class*="bg-emerald-600"],
+  html.light :is(button, a)[class*="bg-rose-600"],
+  html.light :is(button, a)[class*="bg-red-600"] {
+    color: #ffffff !important;
+  }
+
+  html.light :is(button, a)[class*="bg-gradient-to-"] *,
+  html.light :is(button, a)[class*="bg-purple-600"] *,
+  html.light :is(button, a)[class*="bg-indigo-600"] *,
+  html.light :is(button, a)[class*="bg-cyan-600"] *,
+  html.light :is(button, a)[class*="bg-blue-600"] *,
+  html.light :is(button, a)[class*="bg-violet-600"] *,
+  html.light :is(button, a)[class*="bg-pink-600"] *,
+  html.light :is(button, a)[class*="bg-emerald-600"] *,
+  html.light :is(button, a)[class*="bg-rose-600"] *,
+  html.light :is(button, a)[class*="bg-red-600"] * {
+    color: #ffffff !important;
+  }
+
+  /* Soft accent chips remain tinted rather than becoming plain white. */
+  html.light :is(.bg-purple-500\/10, .bg-purple-500\/15, .bg-purple-500\/20) {
+    background-color: #f3e8ff !important;
+    border-color: #ddd6fe !important;
+  }
+  html.light :is(.text-purple-300, .text-purple-400) { color: #6d28d9 !important; }
+  html.light :is(.bg-cyan-500\/10, .bg-cyan-500\/15, .bg-cyan-500\/20) {
+    background-color: #ecfeff !important;
+    border-color: #a5f3fc !important;
+  }
+  html.light :is(.text-cyan-300, .text-cyan-400) { color: #0e7490 !important; }
+  html.light :is(.bg-indigo-500\/10, .bg-indigo-500\/15, .bg-indigo-500\/20) {
+    background-color: #eef2ff !important;
+    border-color: #c7d2fe !important;
+  }
+  html.light :is(.text-indigo-300, .text-indigo-400) { color: #4338ca !important; }
+  html.light :is(.bg-emerald-500\/10, .bg-emerald-500\/15, .bg-emerald-500\/20) {
+    background-color: #ecfdf5 !important;
+    border-color: #a7f3d0 !important;
+  }
+  html.light :is(.text-emerald-300, .text-emerald-400) { color: #047857 !important; }
+  html.light :is(.bg-amber-500\/10, .bg-amber-500\/15, .bg-amber-500\/20) {
+    background-color: #fffbeb !important;
+    border-color: #fde68a !important;
+  }
+  html.light :is(.text-amber-300, .text-amber-400) { color: #92400e !important; }
+
+  html.light :is(.border-slate-600, .border-slate-700, .border-slate-800,
+    .border-white\/5, .border-white\/10) {
+    border-color: var(--nf-border) !important;
+  }
+
+  html.light :is(button, a):focus-visible {
+    outline-color: #7c3aed !important;
+  }
+}
+
+
+/* Light-mode QA follow-up: translucent decorative gradients are secondary controls,
+   not primary actions. Give them a real pale surface and readable accent text. */
+@layer utilities {
+  html.light :is(button, a)[class*="from-amber-500/20"],
+  html.light :is(button, a)[class*="from-amber-500/30"],
+  html.light :is(button, a)[class*="from-purple-600/20"],
+  html.light :is(button, a)[class*="from-purple-600/30"] {
+    background-image: linear-gradient(110deg, #fff7ed, #f5f3ff) !important;
+    background-color: #fff7ed !important;
+    border-color: #e9d5ff !important;
+    color: #7c2d12 !important;
+    box-shadow: 0 1px 2px rgba(23, 32, 51, 0.05) !important;
+  }
+
+  html.light :is(button, a)[class*="from-amber-500/20"] *,
+  html.light :is(button, a)[class*="from-amber-500/30"] *,
+  html.light :is(button, a)[class*="from-purple-600/20"] *,
+  html.light :is(button, a)[class*="from-purple-600/30"] * {
+    color: #7c2d12 !important;
+  }
+
+  html.light :is(button, a)[class*="from-amber-500/20"]:hover,
+  html.light :is(button, a)[class*="from-amber-500/30"]:hover,
+  html.light :is(button, a)[class*="from-purple-600/20"]:hover,
+  html.light :is(button, a)[class*="from-purple-600/30"]:hover {
+    background-image: linear-gradient(110deg, #ffedd5, #ede9fe) !important;
+    border-color: #c4b5fd !important;
+    transform: translateY(-1px);
+  }
+
+  /* Keep keyboard focus clear without relying on color alone. */
+  html.light :is(button, a, input, select, textarea):focus-visible {
+    outline: 3px solid #7c3aed !important;
+    outline-offset: 3px;
+  }
+
+  /* Avoid low-contrast placeholder text on pale fields. */
+  html.light :is(input, textarea)::placeholder {
+    color: #64748b !important;
+    opacity: 1;
+  }
+}
+
+
+/* NameForge — refined light theme: crisp white surfaces and visible sky-blue accents.
+   Scoped to html.light so the dark theme remains unchanged. */
+html.light {
+  color-scheme: light;
+  --nf-page: #f0f7ff;
+  --nf-surface: #ffffff;
+  --nf-surface-soft: #e8f3ff;
+  --nf-border: #b8d8f5;
+  --nf-ink: #132b46;
+  --nf-muted: #49647e;
+  --bg-main: #f0f7ff;
+  --text-main: #132b46;
+  --card-bg: #ffffff;
+  --card-border: #c4def5;
+  background-color: #f0f7ff;
+  color: #132b46;
+}
+
+html.light body {
+  color: #132b46 !important;
+  background-color: #f0f7ff !important;
+  background-image:
+    radial-gradient(ellipse at 8% 0%, rgba(147, 197, 253, 0.28), transparent 38%),
+    radial-gradient(ellipse at 95% 12%, rgba(186, 230, 253, 0.30), transparent 34%),
+    linear-gradient(180deg, #f7fbff 0%, #edf6ff 52%, #f5f9ff 100%) !important;
+}
+
+html.light :is(main, section, aside, nav, header, footer) {
+  border-color: #c7def2;
+}
+
+html.light :is(.rounded-xl, .rounded-2xl, .rounded-3xl, [class*="card"], [class*="panel"], [class*="sidebar"]) {
+  border-color: #c5dcf2;
+}
+
+html.light :is(input, select, textarea) {
+  color: #173653 !important;
+  background-color: #ffffff !important;
+  border-color: #a9cbea !important;
+  box-shadow: 0 1px 2px rgba(30, 78, 121, 0.05);
+}
+
+html.light :is(input, select, textarea):hover {
+  border-color: #73b3e8 !important;
+}
+
+html.light :is(input, select, textarea):focus {
+  border-color: #2583cc !important;
+  box-shadow: 0 0 0 3px rgba(56, 145, 220, 0.16) !important;
+}
+
+html.light :is(button, a):not([class*="bg-blue-"]):not([class*="bg-sky-"]):not([class*="from-blue-"]):not([class*="to-blue-"]) {
+  border-color: #c1d9ef;
+}
+
+html.light :is(button, a):not([class*="bg-blue-"]):not([class*="bg-sky-"]):not([class*="from-blue-"]):not([class*="to-blue-"]):hover {
+  border-color: #82b9e6;
+}
+
+html.light :is(.text-slate-400, .text-slate-500, .text-gray-400, .text-gray-500) {
+  color: #526b84 !important;
+}
+
+html.light :is(.bg-slate-800, .bg-slate-900, .bg-gray-800, .bg-gray-900, [class*="bg-[#070912"], [class*="bg-[#090d1c"]) {
+  background-color: #ffffff !important;
+}
+
+html.light :is(.border-slate-700, .border-slate-800, .border-gray-700, .border-gray-800) {
+  border-color: #c5dcf2 !important;
+}
+
+html.light :is(button, a, input, select, textarea):focus-visible {
+  outline-color: #1976c9 !important;
+}
+
+
+/* Generator detail pages: unify leftover dark panels in the light theme.
+   This specifically fixes gradient-backed cards and side sections that can
+   retain a dark gradient even after their background-color has been changed. */
+html.light main [class*="from-[#"],
+html.light main [class*="via-[#"],
+html.light main [class*="to-[#"] {
+  background-image: none !important;
+}
+
+html.light main :is(
+  [class*="bg-[#0"], [class*="bg-[#1"],
+  [class*="from-[#"], [class*="via-[#"], [class*="to-[#"],
+  .bg-slate-900, .bg-slate-900\/80, .bg-slate-900\/90,
+  .bg-slate-800, .bg-slate-800\/80, .bg-slate-800\/90
+) {
+  background-color: #ffffff !important;
+  border-color: #c4def5 !important;
+  box-shadow: 0 8px 24px rgba(36, 92, 145, 0.07);
+}
+
+html.light main [class*="bg-gradient-to-b"] {
+  background-image: linear-gradient(180deg, #ffffff 0%, #f2f8ff 100%) !important;
+}
+
+html.light main :is(
+  .border-slate-700, .border-slate-700\/80, .border-slate-700\/60,
+  .border-slate-800, .border-slate-800\/80, .border-slate-800\/60
+) {
+  border-color: #c4def5 !important;
+}
+
+html.light main :is(h1, h2, h3, h4, h5, h6, .text-white, .text-slate-100, .text-slate-200) {
+  color: #163653 !important;
+}
+
+html.light main :is(.text-slate-300, .text-slate-400, .text-slate-500) {
+  color: #526d86 !important;
+}
+
+html.light main :is(button, a)[class*="bg-gradient-to-"],
+html.light main :is(button, a)[class*="bg-blue-600"],
+html.light main :is(button, a)[class*="bg-purple-600"],
+html.light main :is(button, a)[class*="bg-indigo-600"],
+html.light main :is(button, a)[class*="bg-cyan-600"],
+html.light main :is(button, a)[class*="bg-emerald-600"] {
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 5px 14px rgba(37, 99, 235, 0.18);
+}
+
+html.light main :is(button, a)[class*="bg-gradient-to-"] *,
+html.light main :is(button, a)[class*="bg-blue-600"] *,
+html.light main :is(button, a)[class*="bg-purple-600"] *,
+html.light main :is(button, a)[class*="bg-indigo-600"] *,
+html.light main :is(button, a)[class*="bg-cyan-600"] *,
+html.light main :is(button, a)[class*="bg-emerald-600"] * {
+  color: #ffffff !important;
+}
+
+html.light main kbd {
+  background-color: #e8f3ff !important;
+  border-color: #c4def5 !important;
+  color: #234c70 !important;
+}
+
+html.light main :is(button, a):not([class*="bg-blue-"]):not([class*="bg-purple-"]):not([class*="bg-indigo-"]):not([class*="bg-cyan-"]):not([class*="bg-emerald-"]):not([class*="bg-gradient-to-"]) {
+  color: #294965;
+}
+
+html.light main :is(button, a):not([class*="bg-blue-"]):not([class*="bg-purple-"]):not([class*="bg-indigo-"]):not([class*="bg-cyan-"]):not([class*="bg-emerald-"]):not([class*="bg-gradient-to-"]):hover {
+  background-color: #e8f3ff !important;
+  border-color: #8fc4ef !important;
+}
+
+
+/* GLOBAL LIGHT THEME CONSISTENCY — applies to every route, not just Gaming.
+   Keep the page structure intact while normalizing shared surfaces, typography,
+   borders, form controls and interactive states across all views. */
+html.light,
+html.light body,
+html.light #root {
+  min-height: 100%;
+  color: #173653 !important;
+  background-color: #f0f7ff !important;
+}
+
+html.light #root > div {
+  color: #173653;
+  background-color: transparent;
+}
+
+html.light body {
+  background-image:
+    radial-gradient(ellipse at 8% 0%, rgba(147, 197, 253, 0.22), transparent 38%),
+    radial-gradient(ellipse at 95% 12%, rgba(186, 230, 253, 0.24), transparent 34%),
+    linear-gradient(180deg, #f7fbff 0%, #edf6ff 52%, #f5f9ff 100%) !important;
+}
+
+/* Neutralize dark-mode surfaces everywhere in the app (home, lists, details,
+   saved names, style studio, navigation, footer and dialogs). */
+html.light #root [class*="bg-[#0"],
+html.light #root [class*="bg-[#1"],
+html.light #root [class*="from-[#0"],
+html.light #root [class*="from-[#1"],
+html.light #root [class*="via-[#0"],
+html.light #root [class*="via-[#1"],
+html.light #root [class*="to-[#0"],
+html.light #root [class*="to-[#1"] {
+  background-color: #ffffff !important;
+  background-image: none !important;
+}
+
+html.light #root [class*="bg-slate-950"],
+html.light #root [class*="bg-slate-900"],
+html.light #root [class*="bg-slate-800"],
+html.light #root [class*="bg-gray-950"],
+html.light #root [class*="bg-gray-900"],
+html.light #root [class*="bg-gray-800"] {
+  background-color: #ffffff !important;
+}
+
+html.light #root [class*="border-slate-800"],
+html.light #root [class*="border-slate-700"],
+html.light #root [class*="border-gray-800"],
+html.light #root [class*="border-gray-700"],
+html.light #root [class*="border-white/"] {
+  border-color: #c4def5 !important;
+}
+
+/* Shared typography rules, with saturated action controls exempted below. */
+html.light #root :is(h1, h2, h3, h4, h5, h6) {
+  color: #163653 !important;
+}
+
+html.light #root :is(p, li, label, small, span, div, td, th, dt, dd):not(.keep-white) {
+  --tw-text-opacity: 1;
+}
+
+html.light #root :is(.text-white, .text-slate-50, .text-slate-100, .text-slate-200) {
+  color: #173653 !important;
+}
+
+html.light #root :is(.text-slate-300, .text-slate-400, .text-slate-500,
+                     .text-gray-300, .text-gray-400, .text-gray-500) {
+  color: #526d86 !important;
+}
+
+/* Keep white text on strong primary buttons and their descendants. */
+html.light #root :is(button, a, [role="button"])[class*="bg-gradient-to-"],
+html.light #root :is(button, a, [role="button"])[class*="bg-blue-600"],
+html.light #root :is(button, a, [role="button"])[class*="bg-sky-600"],
+html.light #root :is(button, a, [role="button"])[class*="bg-purple-600"],
+html.light #root :is(button, a, [role="button"])[class*="bg-indigo-600"],
+html.light #root :is(button, a, [role="button"])[class*="bg-cyan-600"],
+html.light #root :is(button, a, [role="button"])[class*="bg-emerald-600"],
+html.light #root :is(button, a, [role="button"])[class*="bg-rose-600"],
+html.light #root :is(button, a, [role="button"])[class*="bg-red-600"] {
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+html.light #root :is(button, a, [role="button"])[class*="bg-gradient-to-"] *,
+html.light #root :is(button, a, [role="button"])[class*="bg-blue-600"] *,
+html.light #root :is(button, a, [role="button"])[class*="bg-sky-600"] *,
+html.light #root :is(button, a, [role="button"])[class*="bg-purple-600"] *,
+html.light #root :is(button, a, [role="button"])[class*="bg-indigo-600"] *,
+html.light #root :is(button, a, [role="button"])[class*="bg-cyan-600"] *,
+html.light #root :is(button, a, [role="button"])[class*="bg-emerald-600"] *,
+html.light #root :is(button, a, [role="button"])[class*="bg-rose-600"] *,
+html.light #root :is(button, a, [role="button"])[class*="bg-red-600"] * {
+  color: #ffffff !important;
+}
+
+/* Consistent inputs and keyboard focus across every screen. */
+html.light #root :is(input, select, textarea) {
+  color: #173653 !important;
+  background-color: #ffffff !important;
+  border-color: #a9cbea !important;
+}
+
+html.light #root :is(input, select, textarea)::placeholder {
+  color: #7188a0 !important;
+}
+
+html.light #root :is(button, a, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid rgba(37, 131, 204, 0.55) !important;
+  outline-offset: 2px;
+}
+
+/* Shared card treatment: same white surface and blue outline on every route. */
+html.light #root :is(
+  article, dialog, [role="dialog"],
+  .rounded-xl, .rounded-2xl, .rounded-3xl,
+  [class*="card"], [class*="panel"], [class*="sidebar"]
+) {
+  border-color: #c4def5;
+}
+
+html.light #root :is(button, a):not([class*="bg-gradient-to-"]):not([class*="bg-blue-600"]):not([class*="bg-sky-600"]):not([class*="bg-purple-600"]):not([class*="bg-indigo-600"]):not([class*="bg-cyan-600"]):not([class*="bg-emerald-600"]):hover {
+  border-color: #8fc4ef !important;
+}
+
+html.light #root option {
+  color: #173653;
+  background-color: #ffffff;
+}
+
+
+/* Consistent, explicit choice controls across all routes and themes.
+   Use a drawn chevron instead of relying on browser-specific native select arrows. */
+@layer base {
+  select:not([multiple]) {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    min-width: 0;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23a78bfa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 0.75rem center !important;
+    background-size: 1rem 1rem !important;
+    padding-inline-end: 2.5rem !important;
+  }
+
+  html.light select:not([multiple]) {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23526176' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") !important;
+  }
+
+  [dir="rtl"] select:not([multiple]) {
+    background-position: left 0.75rem center !important;
+    padding-inline-start: 2.5rem !important;
+    padding-inline-end: 0.75rem !important;
+  }
+
+  select[multiple] {
+    -webkit-appearance: auto !important;
+    -moz-appearance: auto !important;
+    appearance: auto !important;
+    background-image: none !important;
+    min-height: 8rem;
+  }
+
+  select option,
+  select optgroup {
+    background-color: #0f1629;
+    color: #f5f7ff;
+  }
+
+  html.light select option,
+  html.light select optgroup {
+    background-color: #ffffff;
+    color: #172033;
+  }
+
+  input,
+  select,
+  textarea {
+    max-width: 100%;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  a[class*="cursor-pointer"] {
+    cursor: pointer;
+  }
+
+  button:focus-visible,
+  select:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible {
+    outline: 3px solid #a78bfa;
+    outline-offset: 2px;
+  }
+
+  button {
+    -webkit-appearance: button;
+    touch-action: manipulation;
+  }
+
+  @media (max-width: 640px) {
+    select:not([multiple]) {
+      min-height: 2.75rem;
+      font-size: max(0.875rem, 16px);
+    }
+  }
+}

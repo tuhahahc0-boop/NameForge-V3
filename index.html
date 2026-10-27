@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NameForge — 234+ Free & Professional Name Generators</title>
+    <meta
+      name="description"
+      content="NameForge is a professional suite of 234+ free name generators for brands, businesses, characters, fantasy lore, gaming tags, tech startups, and scientific naming."
+    />
+    <meta
+      name="keywords"
+      content="name generator, fantasy name generator, brand name generator, business names, gaming tag generator, RPG names, typography styler"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#060611" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./images/nameforge-logo.png" />
+    <link rel="apple-touch-icon" href="./images/nameforge-logo.png" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%230f172a'/><path d='M7 21h18v3H7z' fill='%2306b6d4'/><path d='M5 13h18a3 3 0 0 1 3 3v2H5z' fill='%238b5cf6'/><path d='M17 5l-6 9h5l-1 7 7-10h-5l2-6z' fill='%2338bdf8'/></svg>"
+    />
+
+    <!-- Prevent Theme & Language Flash -->
+    <script>
+      (function() {
+        try {
+          var raw = localStorage.getItem('nameforge_settings');
+          var lang = 'en';
+          if (raw) {
+            var s = JSON.parse(raw);
+            if (typeof s.language === 'string' && /^[a-z]{2,3}$/.test(s.language)) lang = s.language;
+            var isDark = true;
+            if (s.theme === 'light') isDark = false;
+            else if (s.theme === 'system') {
+              isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            }
+            if (isDark) {
+              document.documentElement.classList.add('dark');
+              document.documentElement.classList.remove('light');
+            } else {
+              document.documentElement.classList.add('light');
+              document.documentElement.classList.remove('dark');
+            }
+            if (['ar', 'he', 'fa', 'ur', 'ps'].indexOf(lang) !== -1) {
+              document.documentElement.dir = 'rtl';
+            } else {
+              document.documentElement.dir = 'ltr';
+            }
+            // Only apply known text-size modes from persisted settings.
+            if (s.textSize === 'large' || s.textSize === 'compact') {
+              document.documentElement.classList.add('text-size-' + s.textSize);
+            }
+          }
+          document.documentElement.lang = lang;
+        } catch(e) {}
+      })();
+    </script>
+
+    <!-- Open Graph -->
+    <link rel="canonical" href="https://jjspa4830-hue.github.io/nameforge-V2/" />
+    <meta property="og:url" content="https://jjspa4830-hue.github.io/nameforge-V2/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:title" content="NameForge — 234+ Free & Professional Name Generators" />
+    <meta
+      property="og:description"
+      content="Discover free name generators for brands, businesses, characters, fantasy worlds, gaming, startups, and creative projects."
+    />
+    <meta property="og:site_name" content="NameForge" />
+    <meta property="og:image" content="https://jjspa4830-hue.github.io/nameforge-V2/images/nameforge-logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="NameForge — 234+ Free & Professional Name Generators" />
+    <meta name="twitter:description" content="Discover free name generators for brands, businesses, characters, fantasy worlds, gaming, startups, and creative projects." />
+    <meta name="twitter:image" content="https://jjspa4830-hue.github.io/nameforge-V2/images/nameforge-logo.png" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "NameForge",
+        "url": "https://jjspa4830-hue.github.io/nameforge-V2/",
+        "description": "Free name generators for brands, businesses, characters, fantasy worlds, gaming, startups, and creative projects.",
+        "applicationCategory": "UtilitiesApplication",
+        "operatingSystem": "Web Browser",
+        "isAccessibleForFree": true,
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "EUR"
+        }
+      }
+    </script>
+  </head>
+  <body class="bg-[#060611] text-white antialiased transition-colors duration-200">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "name": "nameforge",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 3000",
+    "build": "tsc && vite build && npx tsx scripts/generate-seo-pages.ts",
+    "build:gh-pages": "tsc && vite build --base=./ && npx tsx scripts/generate-seo-pages.ts",
+    "preview": "vite preview --host 0.0.0.0 --port 3000",
+    "lint": "tsc --noEmit",
+    "test": "npx tsx src/tests/comprehensiveSuite.ts && node scripts/siteMetadata.test.mjs",
+    "test:visual": "node scripts/visual-qa.mjs",
+    "audit:i18n": "npx tsx scripts/localization-coverage-audit.ts"
+  },
+  "dependencies": {
+    "lucide-react": "^0.475.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "tailwindcss": "^4.0.0",
+    "typescript": "^5.7.3",
+    "vite": "^6.1.0",
+    "playwright": "^1.56.1"
+  }
+}

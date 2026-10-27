@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NameForge — Redirection</title>
+    <script>
+      (function() {
+        var path = window.location.pathname;
+        var search = window.location.search || '';
+        var hash = window.location.hash || '';
+        var parts = path.split('/').filter(Boolean);
+        var basePrefix = '';
+
+        // GitHub Pages project sites use /<repository>/ as their base path.
+        if (window.location.hostname.indexOf('github.io') !== -1 && parts.length > 0) {
+          basePrefix = '/' + parts[0];
+          path = '/' + parts.slice(1).join('/');
+        } else if (path.indexOf('/nameforge') === 0) {
+          // Keep compatibility with the previous /nameforge deployment.
+          basePrefix = '/nameforge';
+          path = path.slice(basePrefix.length);
+        }
+
+        var cleanPath = path.replace(/^\/+|\/+$/g, '');
+        var targetRoute = hash
+          ? hash.replace(/^#\/?/, '')
+          : cleanPath;
+
+        // Query parameters must stay before the hash so the app can read them.
+        var targetUrl = (basePrefix || '') + '/' + search;
+        if (targetRoute) {
+          targetUrl += '#/' + targetRoute.replace(/^\/+/, '');
+        }
+
+        window.location.replace(targetUrl);
+      })();
+    </script>
+  </head>
+  <body style="background:#060611;color:#94a3b8;font-family:system-ui,-apple-system,sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;">
+    <p>Redirection vers NameForge...</p>
+  </body>
+</html>

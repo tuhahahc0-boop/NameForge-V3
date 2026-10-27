@@ -1,0 +1,8 @@
+{
+  "name": "NameForge",
+  "description": "Free professional name generator for brands, businesses, fantasy, sci-fi, anime, gaming, novels, and creative projects.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
